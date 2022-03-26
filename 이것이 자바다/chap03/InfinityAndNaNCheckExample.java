@@ -10,7 +10,7 @@ public class InfinityAndNaNCheckExample {
 		System.out.println(Double.isInfinite(z));
 		
 		if(Double.isInfinite(z) || Double.isNaN(z)) {
-			System.out.println("°ª »êÃâ ºÒ°¡");
+			System.out.println("ê°’ ì‚°ì¶œ ë¶ˆê°€");
 		} else {
 			System.out.println(z + 2);
 		}
