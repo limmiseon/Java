@@ -14,9 +14,9 @@ public class Java005_A2 {
 		
 		mean = ((double) sum / inputN);
 		if (inputN % 2 == 0) {
-			median = (double) (inputN / 2) + 0.5;
+			median = (inputN / 2) + 0.5;
 		} else {
-			median = (double) (inputN / 2) + 1;
+			median = (inputN / 2) + 1;
 		}
 		System.out.println("Mean : " + mean + ", Median : " + median);
 
