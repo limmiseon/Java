@@ -5,27 +5,30 @@ import java.util.Scanner;
 public class A4_006 {
 
 	public static void main(String[] args) {
-		printNum ();
-		
-
-	}
-	
-	static void printNum () {
 		Scanner scanner = new Scanner(System.in);
 		String strNum = scanner.nextLine();
 		String[] cutNum = strNum.split(" ");
-		
+		double[] arr = new double[cutNum.length];
+
+		// String array to double array
+		for (int i = 0; i < cutNum.length; i++) {
+			arr[i] = Double.parseDouble(cutNum[i]);
+		}
+
 		double inputNum = scanner.nextDouble();
-		double min = Double.MAX_VALUE;
-		double minus = 0;
-		
-		for (int j = 0; j <= cutNum.length - 1; j++) {
-			cutNum[j] - Math.abs(inputNum);
-			if(minus != 0 && minus < min) {
-				min = minus;
+
+		// Finding the Nearest Number
+		double distance = Math.abs(arr[0] - inputNum);
+		int index = 0;
+		for (int k = 1; k < arr.length; k++) {
+			double kdistance = Math.abs(arr[k] - inputNum);
+			if (kdistance < distance && kdistance != 0) {
+				index = k;
+				distance = kdistance;
 			}
 		}
-		System.out.println(min);
+		
+		double nearestNumber = arr[index];
+		System.out.println(arr[index]);
 	}
-
 }
