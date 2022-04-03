@@ -75,11 +75,7 @@ public class A1_Class {
 			System.out.println("\"" + num4 + "\" is registered.");
 		} else if (storeCourse == 5) {
 			System.out.println("\"" + num5 + "\" is registered.");
-		} else if (storeCourse == 0) {
-			printMenu();
-		} else {
-			System.out.println("Wrong number");
-		}
+		} 
 	}
 
 	public void myCourse() {
