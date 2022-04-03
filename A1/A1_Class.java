@@ -3,31 +3,34 @@ package A1;
 import java.util.Scanner;
 
 public class A1_Class {
-	int storeCourse;
+	int[] storeCourse = new int[10];
+	int index = 0;
 
 	public A1_Class() {
 	}
 
 	public void printMenu() {
+
 		System.out.println("# Menu");
 		System.out.println("1. Course List");
 		System.out.println("2. My Course");
 		System.out.print("-> ");
 
 		Scanner scanner = new Scanner(System.in);
-		int choose = scanner.nextInt();
-
+		int choose;
+		choose = scanner.nextInt();
 		if (choose == 1) {
 			printCourseList();
 		} else if (choose == 2) {
-			myCourse(storeCourse);
+			myCourse();
 		} else {
-			System.out.println("Worng number");
+			System.out.println("Worng number! please select the number agian.");
 			printMenu();
 		}
 	}
 
 	public void printCourseList() {
+		int choose = 0;
 		System.out.println("# Course List");
 		System.out.println("1. Korean");
 		System.out.println("2. Math");
@@ -38,21 +41,21 @@ public class A1_Class {
 		System.out.print("-> ");
 
 		Scanner scanner = new Scanner(System.in);
-		int choose = scanner.nextInt();
+		choose = scanner.nextInt();
 
 		if (choose == 0) {
 			printMenu();
 			return;
-		} else if (choose > 5) {
-			System.out.println("Wrong number");
+		} else if (choose < 6 && choose > 0) {
+			this.storeCourse[index] = choose;
+			chooseCourse(choose);
+			index++;
 			printCourseList();
-			return;
+		} else {
+			System.out.println("Worng number! please select the number agian.");
+			printCourseList();
 		}
 
-		this.storeCourse = choose;
-		chooseCourse(storeCourse);
-
-		printCourseList();
 	}
 
 	public void chooseCourse(int storeCourse) {
@@ -79,37 +82,44 @@ public class A1_Class {
 		}
 	}
 
-	public void myCourse(int storeCourse) {
-		this.storeCourse = storeCourse;
-		String index;
-
+	public void myCourse() {
+		String courseName = "";
 		System.out.println("# My Course");
 
-		if (storeCourse == 1) {
-			index = "Korean";
-		} else if (storeCourse == 2) {
-			index = "Math";
-		} else if (storeCourse == 3) {
-			index = "English";
-		} else if (storeCourse == 4) {
-			index = "Social Studies";
-		} else if (storeCourse == 5) {
-			index = "Science";
-		} else {
-			System.out.println("You didn't choose the course");
-			return;
-		}
+		for (int i = 0, j = 1; i <= index; i++, j++) {
+			if (storeCourse[i] == 1) {
+				courseName = "Korean";
+			} else if (storeCourse[i] == 2) {
+				courseName = "Math";
+			} else if (storeCourse[i] == 3) {
+				courseName = "English";
+			} else if (storeCourse[i] == 4) {
+				courseName = "Social Studies";
+			} else if (storeCourse[i] == 5) {
+				courseName = "Science";
+			} else if (storeCourse[0] == 0) {
+				System.out.println("You didn't choose the course");
+				break;
+			} else {
+				continue;
+			}
 
-		System.out.println("1. " + index);
+			System.out.println(j + ". " + courseName);
+
+			if (storeCourse[i] == 0) {
+				break;
+			}
+		}
 		System.out.println("- End -");
-		
+
 		Scanner scanner = new Scanner(System.in);
 		int choose = scanner.nextInt();
-		
-		if(choose == 0) { 
+
+		if (choose == 0) {
+			this.index = 0;
 			printMenu();
 		} else {
-			System.out.println("Wrong number");
+			System.out.println("Close the program.");
 			return;
 		}
 	}
